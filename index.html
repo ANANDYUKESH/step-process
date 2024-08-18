@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>step process</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step Process</title>
     <style>
         body {
-            background-color: yellow;
+            background-color: rgb(56, 56, 52);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 50vh;
+            height: 100vh;
             margin: 0;
         }
 
@@ -26,6 +29,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+          
+        }
+
+        .step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -35px;
+            width: 70px;
+            height: 2px;
+            background-color: #ccc;
+            z-index: -1;
         }
 
         .step.active {
@@ -40,6 +56,7 @@
 
         .step i {
             font-size: 24px;
+            
         }
 
         .step.active i {
@@ -51,9 +68,8 @@
         }
 
         .buttons {
-            margin-top: 100px;
-          
-            /* display: flex; */
+            margin-top: 50px;
+            display: flex;
             justify-content: center;
         }
 
@@ -67,27 +83,32 @@
             cursor: pointer;
             margin: 0 10px;
             box-shadow: 0px 2px 2px black;
+            border: none;
+            outline: none;
         }
 
         .button.active {
-            background-color:purple;
+            background-color: purple;
+        }
+
+        .button:hover {
+            background-color: darkgray;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="step"><i class="icon"></i></div>_____________
-        <div class="step"><i class="icon"></i></div>_____________
-        <div class="step"><i class="icon"></i></div>_____________
-        <div class="step"><i class="icon"></i></div>_____________
-        <div class="step"><i class="icon"></i></div>_____________
+        <div class="step"><i class="icon"></i></div>
+        <div class="step"><i class="icon"></i></div>
+        <div class="step"><i class="icon"></i></div>
+        <div class="step"><i class="icon"></i></div>
+        <div class="step"><i class="icon"></i></div>
     </div>
     <div class="buttons">
         <button class="button">←</button>
         <button class="button active">→</button>
     </div>
    
-
     <script>
         const steps = document.querySelectorAll('.step');
         const buttons = document.querySelectorAll('.button');
@@ -123,7 +144,8 @@
             });
         });
 
-        updateSteps(); // Initial update
+        updateSteps(); 
+
     </script>
 </body>
 </html>
